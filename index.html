@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crunch Club ASMR</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #29231f;
+      color: #f5eee5;
+      font-family: Poppins, Arial, sans-serif;
+      text-align: center;
+    }
+
+    .intro {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(76px, 12vw, 140px);
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .intro p {
+      font-size: 18px;
+    }
+
+    button {
+      background: #bd8967;
+      color: #241d19;
+      border: 0;
+      border-radius: 30px;
+      padding: 14px 25px;
+      font: inherit;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    button:hover {
+      background: #d2a27f;
+    }
+
+    .scroll {
+      color: #d8c8b8;
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .animals {
+      padding: 70px 20px 90px;
+      background: url("bg hotel.jpg") center / cover no-repeat;
+      min-height: 100vh;
+      box-sizing: border-box;
+      color: #29231f;
+    }
+
+    .animals h2 {
+      font-size: 40px;
+      margin: 0 auto 10px;
+    }
+
+    .animals h2,
+    .animals > p {
+      width: fit-content;
+      max-width: 100%;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(245, 238, 229, 0.9);
+    }
+
+    .animals > p {
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 45px auto;
+    }
+
+    .card {
+      width: 300px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px #9e6c4a30;
+    }
+
+    .card img:hover {
+      transform: scale(1.03);
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin: 14px 0 4px;
+    }
+
+    .card p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="intro">
+    <h1>The Crunch Club</h1>
+    <p>Turn on your speaker. Our guests are having dinner.</p>
+    <button id="musicButton">Set the mood ♪</button>
+    <p class="scroll">Welcome to our restaurant ↓</p>
+  </section>
+
+  <section class="animals" id="animals">
+    <h2>Dinner is served</h2>
+    <p>Click any animal to feed it. Click again to stop. Mix all three!</p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="rab 2.png" id="rabbit" alt="Angry rabbit">
+        <h3>Rabbit</h3>
+        <p>Carrot crunch</p>
+      </div>
+
+      <div class="card">
+        <img src="goat 2.png" id="goat" alt="Angry goat">
+        <h3>Goat</h3>
+        <p>Leaf munch</p>
+      </div>
+
+      <div class="card">
+        <img src="cat 2.png" id="cat" alt="Angry cat">
+        <h3>Cat</h3>
+        <p>Kibble crunch</p>
+      </div>
+    </div>
+  </section>
+
+  <audio src="hotel ambiance.mp3" id="music" loop></audio>
+  <audio src="arnab makan.mp3" id="rabbitSound" loop></audio>
+  <audio src="kambing makan.mp3" id="goatSound" loop></audio>
+  <audio src="kucing makan.mp3" id="catSound" loop></audio>
+
+  <script>
+    let musicOn = false;
+    let rabbitOn = false;
+    let goatOn = false;
+    let catOn = false;
+
+    musicButton.onclick = function() {
+      if (!musicOn) {
+        music.volume = 0.1;
+        music.play();
+        musicButton.innerText = "Pause the music ♪";
+        musicOn = true;
+      } else {
+        music.pause();
+        musicButton.innerText = "Set the mood ♪";
+        musicOn = false;
+      }
+    }
+
+    rabbit.onclick = function() {
+      if (!rabbitOn) {
+        rabbitSound.play();
+        rabbit.src = "rab 1.png";
+        rabbitOn = true;
+      } else {
+        rabbitSound.pause();
+        rabbit.src = "rab 2.png";
+        rabbitOn = false;
+      }
+    }
+
+    goat.onclick = function() {
+      if (!goatOn) {
+        goatSound.play();
+        goat.src = "goat 1.png";
+        goatOn = true;
+      } else {
+        goatSound.pause();
+        goat.src = "goat 2.png";
+        goatOn = false;
+      }
+    }
+
+    cat.onclick = function() {
+      if (!catOn) {
+        catSound.play();
+        cat.src = "cat 1.png";
+        catOn = true;
+      } else {
+        catSound.pause();
+        cat.src = "cat 2.png";
+        catOn = false;
+      }
+    }
+  </script>
+</body>
+</html>s
